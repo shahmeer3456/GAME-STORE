@@ -1,0 +1,45 @@
+.hero-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  transition: opacity 0.5s ease-out;
+  background: transparent;
+  overflow: hidden;
+  margin-top: 80px; /* To account for the fixed navbar */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Add a gradient overlay for better visibility of content on top */
+.hero-scene::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(13, 12, 34, 0.6) 0%,
+    rgba(13, 12, 34, 0.8) 100%
+  );
+  z-index: -1;
+}
+
+.hero-scene canvas {
+  touch-action: none;
+  pointer-events: none;
+}
+
+/* When scrolling, reduce opacity for better content visibility */
+.hero-scene.scrolled {
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .hero-scene {
+    height: 60vh;
+  }
+} 
